@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Toaster } from "sonner";
 import "./globals.css";
 import { FavoritesProvider } from "@/context/FavoritesContext";
 
@@ -19,6 +20,7 @@ export default function RootLayout({
     <html lang="fr">
       <body className={inter.className}>
         <FavoritesProvider>
+          <Toaster />
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             {children}
           </div>

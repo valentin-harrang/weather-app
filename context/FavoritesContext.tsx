@@ -9,6 +9,7 @@ import {
   ReactNode,
 } from "react";
 import { Weather } from "@/types/weather";
+import { toast } from "sonner";
 
 interface FavoritesContextType {
   favorites: Weather[];
@@ -40,12 +41,16 @@ export const FavoritesProvider: FC<{ children: ReactNode }> = ({
     const updatedFavorites = [...favorites, weather];
     setFavorites(updatedFavorites);
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+
+    toast.success("Cette destination a été ajoutée à vos favoris.");
   };
 
   const removeFavorite = (name: string) => {
     const updatedFavorites = favorites.filter((fav) => fav.name !== name);
     setFavorites(updatedFavorites);
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+
+    toast.success("Cette destination a été retirée de vos favoris.");
   };
 
   return (
