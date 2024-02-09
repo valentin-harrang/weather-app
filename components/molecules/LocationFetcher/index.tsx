@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 
+import { WeatherDisplay } from "@/components";
 import { Location } from "@/types/geolocation";
 import { getUserLocation } from "@/utils/geolocation";
 
@@ -29,10 +30,10 @@ const LocationFetcher = () => {
       {error && <p>Erreur : {error}</p>}
       {!error && !location && <p>Chargement de votre position...</p>}
       {location && (
-        <ul>
-          <li>Latitude : {location.latitude}</li>
-          <li>Longitude : {location.longitude}</li>
-        </ul>
+        <WeatherDisplay
+          latitude={location.latitude}
+          longitude={location.longitude}
+        />
       )}
     </div>
   );
