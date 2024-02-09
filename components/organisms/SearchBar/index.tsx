@@ -6,7 +6,6 @@ import getCoordinatesFromQuery from "@/actions/getCoordinatesFromQuery";
 import getWeather from "@/actions/getWeather";
 import { WeatherDetails } from "@/components";
 import { City, Weather } from "@/types/weather";
-import { uniqueCities } from "@/utils/weather";
 
 const SearchBar: FC = () => {
   const [query, setQuery] = useState("");
@@ -19,7 +18,7 @@ const SearchBar: FC = () => {
       if (query.length > 2) {
         try {
           const cities = await getCities({ query });
-          setSuggestions(uniqueCities(cities));
+          setSuggestions(cities);
         } catch (error) {
           console.error(
             "Erreur lors de la récupération des suggestions de villes",

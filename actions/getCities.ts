@@ -1,6 +1,7 @@
 "use server";
 
 import { City, Language } from "@/types/weather";
+import { uniqueCities } from "@/utils/weather";
 
 const apiBaseUrl = "https://api.openweathermap.org/geo/1.0/direct";
 const apiKey = process.env.OPENWEATHER_API_KEY;
@@ -25,7 +26,7 @@ const getCities = async ({
     }
     const cities = await response.json();
 
-    return cities;
+    return uniqueCities(cities);
   } catch (error) {
     console.error("Erreur lors de la récupération des villes :", error);
     throw new Error("Erreur lors de la récupération des villes");
