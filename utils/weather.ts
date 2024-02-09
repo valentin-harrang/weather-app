@@ -8,6 +8,25 @@ export const convertDegreesToDirection = (degrees: number): string => {
   return directions[index];
 };
 
-export const isFavorite = (id: number, favorites: Weather[]): boolean => {
-  return favorites.some((fav) => fav.id === id);
+export const findHottestDestination = (
+  destinations: Weather[]
+): Weather | null => {
+  if (!destinations.length) return null;
+
+  return destinations.reduce((prev, current) =>
+    prev.temp > current.temp ? prev : current
+  );
 };
+
+export const findColdestDestination = (
+  destinations: Weather[]
+): Weather | null => {
+  if (!destinations.length) return null;
+
+  return destinations.reduce((prev, current) =>
+    prev.temp < current.temp ? prev : current
+  );
+};
+
+export const isFavorite = (id: number, favorites: Weather[]): boolean =>
+  favorites.some((fav) => fav.id === id);
