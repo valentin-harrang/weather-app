@@ -2,12 +2,17 @@ import { FC } from "react";
 import Image from "next/image";
 import { Weather } from "@/types/weather";
 import { convertDegreesToDirection } from "@/utils/weather";
+import { AddToFavoritesButton } from "@/components";
 
 type WeatherDetailsProps = {
   weather: Weather;
+  showAddToFavorites?: boolean;
 };
 
-const WeatherDetails: FC<WeatherDetailsProps> = ({ weather }) => (
+const WeatherDetails: FC<WeatherDetailsProps> = ({
+  weather,
+  showAddToFavorites = true,
+}) => (
   <div className="bg-gray-100 p-4 rounded">
     <h2 className="flex text-3xl items-center font-bold">
       <svg
@@ -30,6 +35,7 @@ const WeatherDetails: FC<WeatherDetailsProps> = ({ weather }) => (
         />
       </svg>
       <span className="mr-2">{weather.name}</span>
+      {showAddToFavorites && <AddToFavoritesButton weather={weather} />}
     </h2>
 
     <div className="flex-col md:flex-row md:gap-0 gap-6 md:items-center">
