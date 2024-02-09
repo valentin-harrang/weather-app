@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="fr">
       <body className={inter.className}>
         <FavoritesProvider>
-          <Toaster />
+          <Toaster richColors />
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             {children}
           </div>
