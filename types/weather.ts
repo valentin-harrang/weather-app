@@ -1,7 +1,29 @@
+export interface BaseLocalNames {
+  [languageCode: string]: string;
+}
+
+export type CitiesResponse = City[];
+
+export interface City {
+  name: string;
+  local_names?: LocalNames;
+  lat: number;
+  lon: number;
+  country: string;
+  state?: string;
+}
+
+export interface ExtendedLocalNames {
+  ascii?: string;
+  feature_name?: string;
+}
+
 export enum Language {
   French = "fr",
   English = "en",
 }
+
+export type LocalNames = BaseLocalNames & ExtendedLocalNames;
 
 export enum Unit {
   Standard = "standard",
