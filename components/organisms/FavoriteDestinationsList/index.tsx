@@ -32,12 +32,31 @@ const FavoriteDestinationsList: FC = () => {
           </p>
         )}
 
-        <ul className="list-disc mt-6 pl-4">
+        <ul className="mt-6 pl-4 flex flex-col gap-4">
           {favorites.map(({ name }) => (
             <li key={name} className="ml-4">
-              <div className="flex justify-between">
+              <div className="flex items-center">
+                <button
+                  onClick={() => removeFavorite(name)}
+                  className="ml-2 mr-4 bg-red-500 text-white px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent hover:bg-red-600 transition-colors"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M6 18 18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+
                 <span>{name}</span>
-                <button onClick={() => removeFavorite(name)}>Supprimer</button>
               </div>
             </li>
           ))}
