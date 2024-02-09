@@ -30,3 +30,13 @@ export const findColdestDestination = (
 
 export const isFavorite = (id: number, favorites: Weather[]): boolean =>
   favorites.some((fav) => fav.id === id);
+
+export const uniqueCities = (cities: { name: string; country: string }[]) => {
+  const unique = new Map();
+
+  for (const city of cities) {
+    unique.set(city.name + ", " + city.country, city);
+  }
+
+  return Array.from(unique.values());
+};
