@@ -1,8 +1,9 @@
-import { LocationFetcher } from "@/components";
+import { FavoriteDestinationsList, LocationFetcher } from "@/components";
 
 const Home = () => (
   <main>
     <LocationFetcher />
+    <FavoriteDestinationsList />
   </main>
 );
 
