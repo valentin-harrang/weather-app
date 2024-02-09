@@ -75,7 +75,7 @@ const SearchBar: FC = () => {
         <ul className="absolute bg-white shadow-md mt-2 max-h-60 w-full overflow-auto z-10">
           {suggestions.map(({ name, country }: City) => (
             <li
-              key={name}
+              key={`${name}-${country}`}
               className="p-2 hover:bg-gray-100 cursor-pointer"
               onClick={() => handleSuggestionClick(name)}
             >
