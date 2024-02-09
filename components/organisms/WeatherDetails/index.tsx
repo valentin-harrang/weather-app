@@ -1,17 +1,19 @@
 import { FC } from "react";
 import Image from "next/image";
+import { AddToFavoritesButton } from "@/components";
 import { Weather } from "@/types/weather";
 import { convertDegreesToDirection } from "@/utils/weather";
-import { AddToFavoritesButton } from "@/components";
 
 type WeatherDetailsProps = {
-  weather: Weather;
+  isVertical?: boolean;
   showAddToFavorites?: boolean;
+  weather: Weather;
 };
 
 const WeatherDetails: FC<WeatherDetailsProps> = ({
-  weather,
+  isVertical = false,
   showAddToFavorites = true,
+  weather,
 }) => (
   <div className="bg-gray-100 p-4 rounded">
     <h2 className="flex text-3xl items-center font-bold">
@@ -38,7 +40,13 @@ const WeatherDetails: FC<WeatherDetailsProps> = ({
       {showAddToFavorites && <AddToFavoritesButton weather={weather} />}
     </h2>
 
-    <div className="flex-col md:flex-row md:gap-0 gap-6 md:items-center">
+    <div
+      className={`flex mt-4 justify-between ${
+        isVertical
+          ? "flex-col gap-4 items-baseline"
+          : "flex-col md:flex-row md:gap-0 gap-6 md:items-center"
+      }`}
+    >
       <div>
         <div className="flex items-center">
           {weather.icon && (

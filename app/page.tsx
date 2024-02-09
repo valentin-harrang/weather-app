@@ -10,7 +10,7 @@ const Home = () => (
     <WeatherSummary />
     <LocationFetcher />
 
-    <div className="grid md:grid-cols-2 gap-6">
+    <div className="grid lg:grid-cols-2 gap-6">
       <div className="w-full">
         <SearchBar />
       </div>

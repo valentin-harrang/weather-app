@@ -87,7 +87,7 @@ const SearchBar: FC = () => {
 
       <div className="mt-4">
         {error && <p>{error}</p>}
-        {weather && <WeatherDetails weather={weather} />}
+        {weather && <WeatherDetails weather={weather} isVertical />}
       </div>
     </>
   );
