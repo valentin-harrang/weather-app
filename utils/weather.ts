@@ -28,8 +28,15 @@ export const findColdestDestination = (
   );
 };
 
-export const isFavorite = (id: number, favorites: Weather[]): boolean =>
-  favorites.some((fav) => fav.id === id);
+export const isFavorite = (
+  weatherId: number,
+  weatherName: string,
+  favorites: Weather[]
+) => {
+  return favorites?.some(
+    (fav) => fav.id === weatherId && fav.name === weatherName
+  );
+};
 
 export const uniqueCities = (cities: { name: string; country: string }[]) => {
   const unique = new Map();

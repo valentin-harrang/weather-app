@@ -11,13 +11,20 @@ interface AddToFavoritesButtonProps {
 const AddToFavoritesButton: React.FC<AddToFavoritesButtonProps> = ({
   weather,
 }) => {
-  const { addFavorite, favorites } = useFavorites();
-  const handleAddToFavorites = () => addFavorite(weather);
+  const { addFavorite, favorites, removeFavorite } = useFavorites();
+
+  const handleToggleFavorite = () => {
+    if (isFavorite(weather.id, weather.name, favorites)) {
+      removeFavorite(weather.name);
+    } else {
+      addFavorite(weather);
+    }
+  };
 
   return (
     <button
       className="bg-transparent hover:bg-transparent text-yellow-500 hover:text-yellow-500"
-      onClick={handleAddToFavorites}
+      onClick={handleToggleFavorite}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -25,9 +32,9 @@ const AddToFavoritesButton: React.FC<AddToFavoritesButtonProps> = ({
         strokeWidth="1.5"
         stroke="currentColor"
         className={`w-6 h-6 ${
-          isFavorite(weather.id, favorites)
+          isFavorite(weather.id, weather.name, favorites)
             ? "fill-yellow-500"
-            : "hover:fill-current fill-white"
+            : "hover:fill-current fill-none"
         }`}
       >
         <path
