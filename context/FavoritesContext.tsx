@@ -33,6 +33,10 @@ export const FavoritesProvider: FC<{ children: ReactNode }> = ({
   }, []);
 
   const addFavorite = (weather: Weather) => {
+    if (favorites.some((fav) => fav.name === weather.name)) {
+      return;
+    }
+
     const updatedFavorites = [...favorites, weather];
     setFavorites(updatedFavorites);
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
