@@ -3,6 +3,7 @@
 import { FC, useEffect, useState } from "react";
 import { Weather } from "@/types/weather";
 import getWeather from "@/actions/getWeather";
+import { WeatherDetails } from "@/components";
 
 type Props = {
   latitude: number;
@@ -34,16 +35,7 @@ const WeatherDisplay: FC<Props> = ({ latitude, longitude }) => {
     return <p>Chargement des données météo...</p>;
   }
 
-  return (
-    <div>
-      <h1>{weather.name}</h1>
-      <p>Température : {weather.temp}°C</p>
-      <p>Ressenti : {weather.feels_like}°C</p>
-      <p>Humidité : {weather.humidity}%</p>
-      <p>Pression : {weather.pressure} hPa</p>
-      <p>Vitesse du vent : {weather.wind_speed} m/s</p>
-    </div>
-  );
+  return <WeatherDetails weather={weather} />;
 };
 
 export default WeatherDisplay;
