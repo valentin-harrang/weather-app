@@ -38,7 +38,7 @@ const FavoriteDestinationsList: FC = () => {
               <div className="flex items-center">
                 <button
                   onClick={() => removeFavorite(name)}
-                  className="ml-2 mr-4 bg-red-500 text-white px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent hover:bg-red-600 transition-colors"
+                  className="ml-2 mr-4 bg-red-500 text-white px-2 py-1 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent hover:bg-red-600 transition-colors"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
