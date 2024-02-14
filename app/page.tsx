@@ -11,7 +11,7 @@ const Home = () => (
     <LocationFetcher />
 
     <div className="grid lg:grid-cols-2 gap-6">
-      <div className="w-full">
+      <div className="w-full relative">
         <SearchBar />
       </div>
 
