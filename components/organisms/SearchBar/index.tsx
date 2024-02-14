@@ -1,10 +1,11 @@
 "use client";
 
-import { FC, useState, useEffect } from "react";
+import { FC, useState, useEffect, useRef } from "react";
 import getCities from "@/actions/getCities";
 import getCoordinatesFromQuery from "@/actions/getCoordinatesFromQuery";
 import getWeather from "@/actions/getWeather";
 import { WeatherDetails } from "@/components";
+import { useClickOutside } from "@/hooks";
 import { City, Weather } from "@/types/weather";
 
 const SearchBar: FC = () => {
@@ -12,6 +13,10 @@ const SearchBar: FC = () => {
   const [suggestions, setSuggestions] = useState<City[]>([]);
   const [weather, setWeather] = useState<Weather | null>(null);
   const [error, setError] = useState("");
+
+  const suggestionsRef = useRef<HTMLUListElement>(null);
+
+  useClickOutside([suggestionsRef], () => setSuggestions([]));
 
   useEffect(() => {
     const loadSuggestions = async () => {
@@ -92,7 +97,10 @@ const SearchBar: FC = () => {
       </form>
 
       {suggestions.length > 0 && (
-        <ul className="absolute bg-white shadow-md mt-2 max-h-60 w-full overflow-auto z-10">
+        <ul
+          className="absolute bg-white shadow-md mt-2 max-h-60 w-full overflow-auto z-10"
+          ref={suggestionsRef}
+        >
           {suggestions.map(({ name, country }: City) => (
             <li
               key={`${name}-${country}`}
