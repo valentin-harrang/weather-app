@@ -15,6 +15,7 @@ interface FavoritesContextType {
   favorites: Weather[];
   addFavorite: (weather: Weather) => void;
   removeFavorite: (name: string) => void;
+  removeAllFavorites: () => void;
 }
 
 const FavoritesContext = createContext<FavoritesContextType | undefined>(
@@ -53,9 +54,16 @@ export const FavoritesProvider: FC<{ children: ReactNode }> = ({
     toast.success("Cette destination a été retirée de vos favoris.");
   };
 
+  const removeAllFavorites = () => {
+    setFavorites([]);
+    localStorage.removeItem("favorites");
+
+    toast.success("Toutes les destinations ont été retirées de vos favoris.");
+  };
+
   return (
     <FavoritesContext.Provider
-      value={{ favorites, addFavorite, removeFavorite }}
+      value={{ favorites, addFavorite, removeFavorite, removeAllFavorites }}
     >
       {children}
     </FavoritesContext.Provider>

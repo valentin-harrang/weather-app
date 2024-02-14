@@ -4,7 +4,7 @@ import { FC } from "react";
 import { useFavorites } from "@/context/FavoritesContext";
 
 const FavoriteDestinationsList: FC = () => {
-  const { favorites, removeFavorite } = useFavorites();
+  const { favorites, removeFavorite, removeAllFavorites } = useFavorites();
 
   return (
     <div className="w-full bg-gray-100 p-4 rounded h-fit">
@@ -25,6 +25,7 @@ const FavoriteDestinationsList: FC = () => {
         </svg>
         Mes destinations favorites
       </h2>
+
       <div>
         {favorites.length === 0 && (
           <p className="mt-6">
@@ -61,6 +62,31 @@ const FavoriteDestinationsList: FC = () => {
             </li>
           ))}
         </ul>
+
+        {favorites.length > 0 && (
+          <div className="flex justify-end items-end">
+            <button
+              onClick={() => removeAllFavorites()}
+              className="flex mt-6 bg-red-500 text-white px-2 py-1 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent hover:bg-red-600 transition-colors"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18 18 6M6 6l12 12"
+                />
+              </svg>
+              Tout supprimer
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
